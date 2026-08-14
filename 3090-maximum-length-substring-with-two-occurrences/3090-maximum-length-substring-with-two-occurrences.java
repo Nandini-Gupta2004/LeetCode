@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Solution {
+    public int maximumLengthSubstring(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        int left = 0;
+        int maxLen = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+
+            char ch = s.charAt(right);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+            // If any character occurs more than 2 times
+            while (map.get(ch) > 2) {
+                char leftChar = s.charAt(left);
+                map.put(leftChar, map.get(leftChar) - 1);
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
+}

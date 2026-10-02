@@ -1,6 +1,6 @@
 class Solution {
-    public void generate(int n,int l, int r,String s,ArrayList<String> ans){
-        if(r==n){
+    public void generate(int n, int l, int r, String s,List<String> ans){
+        if(s.length()==2*n){
             ans.add(s);
             return;
         }
